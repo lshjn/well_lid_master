@@ -395,9 +395,17 @@ int	CheckTimeInt(void)
 						  DisLocalTime.Hour,DisLocalTime.Minute,DisLocalTime.Second);
 		printf("alarmdata.timingA:%d-%d,alarmdata.timingB:%d-%d\n",alarmdata.timingA_hour,alarmdata.timingA_min,alarmdata.timingB_hour,
 						  alarmdata.timingB_min);
+	/*
 	if(((0 == alarmdata.timingA_hour)&&(0 == alarmdata.timingA_min)) || ((0 == alarmdata.timingB_hour)&&(0 == alarmdata.timingB_min)))
 	{
 		return 0;	
+	}
+	*/
+	if((0 == DisLocalTime.Year)&&(0 == DisLocalTime.Month)&&(0 == DisLocalTime.Day)&&(0 == DisLocalTime.Hour)&&
+		(0 == DisLocalTime.Minute)&&(0 == DisLocalTime.Second))
+	{
+			printf("time error ---- 0-0-0-0-0-0\n");
+			return 0;
 	}
 	else if(((alarmdata.timingA_hour == DisLocalTime.Hour)&&(alarmdata.timingA_min == DisLocalTime.Minute)&&(0 == DisLocalTime.Second))||
 	   ((alarmdata.timingB_hour == DisLocalTime.Hour)&&(alarmdata.timingB_min == DisLocalTime.Minute)&&(0 == DisLocalTime.Second)))

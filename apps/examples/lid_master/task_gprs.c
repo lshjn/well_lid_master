@@ -115,8 +115,8 @@ int  gprs_warn_upload(int fd,struct gprs_data *gprs,struct adc_msg *adc_dada,str
 			printf("Error:write  Data to gprs\n");
 		}
 	
-		sleep(4);
-		if(cnt++ >= 10)
+		sleep(8);
+		if(cnt++ >= 5)
 		{
 			gprs->msgack = NOACK;
 			return FAIL;
@@ -162,8 +162,8 @@ int  gprs_timeint_upload(int fd,struct gprs_data *gprs,struct adc_msg *adc_dada,
 		{
 			printf("Error:write  Data to gprs\n");
 		}
-		sleep(4);
-		if(cnt++ >= 10)
+		sleep(8);
+		if(cnt++ >= 5)
 		{
 			gprs->msgack = NOACK;
 			return FAIL;
@@ -216,7 +216,7 @@ int  gprs_openlock(int fd,struct gprs_data *gprs,struct adc_msg *adc_dada,struct
 		}
 		//wait
 		sleep(8);
-		if(cnt++ >= 10)
+		if(cnt++ >= 5)
 		{
 			gprs->msgack = NOACK;
 			return FAIL;
@@ -264,8 +264,8 @@ int  gprs_closelock(int fd,struct gprs_data *gprs,struct adc_msg *adc_dada,struc
 			printf("Error:write  Data to gprs\n");
 		}
 		//wait
-		sleep(4);
-		if(cnt++ >= 10)
+		sleep(8);
+		if(cnt++ >= 5)
 		{
 			gprs->msgack = NOACK;
 			return FAIL;
@@ -757,34 +757,34 @@ int my_read2(int fd, char *buffer, int length)
 	  timeout    = false;
 	  ready      = false;
 
-      printf("select_listener: Calling select()\n");
+      printf("my_read2: my_read2 -- Start --\n");
 
       FD_ZERO(&readrfds);
       FD_SET(fd, &readrfds);
 
-      tv.tv_sec  = 60;
+      tv.tv_sec  = 10;
       tv.tv_usec = 0;
 
       timeout    = false;
       ready      = false;
 
 	  ret = select(fd+1, (FAR fd_set*)&readrfds, (FAR fd_set*)NULL, (FAR fd_set*)NULL, &tv);
-	  printf("\nselect_listener: select returned: %d\n", ret);
+	  printf("\nmy_read2: select returned: %d\n", ret);
 
 	  if (ret < 0)
 	    {
-	      printf("select_listener: ERROR select failed: %d\n", errno);
+	      printf("my_read2: ERROR select failed: %d\n", errno);
 	    }
 	  else if (ret == 0)
 	    {
-	      printf("select_listener: Timeout\n");
+	      printf("my_read2: Timeout\n");
 	      timeout = true;
 	    }
 	  else
 	    {
 	      if (ret != 1)
 	        {
-	          printf("select_listener: ERROR poll reported: %d\n", ret);
+	          printf("my_read2: ERROR poll reported: %d\n", ret);
 	        }
 	      else
 	        {
@@ -793,7 +793,7 @@ int my_read2(int fd, char *buffer, int length)
 
 	      if (!FD_ISSET(fd, &readrfds))
 	        {
-	          printf("select_listener: ERROR fd=%d not in fd_set\n", fd);
+	          printf("my_read2: ERROR fd=%d not in fd_set\n", fd);
 			  return -1;
 	        }
 	    }
@@ -809,12 +809,12 @@ int my_read2(int fd, char *buffer, int length)
 	            {
 	              if (ready)
 	                {
-	                  printf("select_listener: ERROR no read data\n");
+	                  printf("my_read2: ERROR no read data\n");
 	                }
 	            }
 	          else if (errno != EINTR)
 	            {
-	              printf("select_listener: read failed: %d\n", errno);
+	              printf("my_read2: read failed: %d\n", errno);
 	            }
 	          nbytes = 0;
 	        }
@@ -822,12 +822,12 @@ int my_read2(int fd, char *buffer, int length)
 	        {
 	          if (timeout)
 	            {
-	              printf("select_listener: ERROR? Poll timeout, but data read\n");
+	              printf("my_read2: ERROR? Poll timeout, but data read\n");
 	              printf("               (might just be a race condition)\n");
 	            }
 
 	          //buffer[nbytes] = '\0';
-	          printf("select_listener: Read '%s' (%ld bytes)\n", buffer, (long)nbytes);
+	          printf("my_read2: Read <%ld bytes> %s\n", (long)nbytes,buffer);
 	        }
 
     		bytes_left-=nbytes; 
@@ -842,6 +842,7 @@ int my_read2(int fd, char *buffer, int length)
 
 	  fflush(stdout);
 //	}
+     printf("my_read2: my_read2 -- End --\n");
 	return (length-bytes_left) ;
 } 
 #endif
