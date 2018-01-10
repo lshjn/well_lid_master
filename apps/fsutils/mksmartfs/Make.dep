@@ -1,0 +1,19 @@
+mksmartfs.o: mksmartfs.c \
+ /home/lbf/project/well_lid_master/nuttx/include/nuttx/config.h \
+ /home/lbf/project/well_lid_master/nuttx/include/sys/stat.h \
+ /home/lbf/project/well_lid_master/nuttx/include/sys/types.h \
+ /home/lbf/project/well_lid_master/nuttx/include/nuttx/compiler.h \
+ /home/lbf/project/well_lid_master/nuttx/include/stdint.h \
+ /home/lbf/project/well_lid_master/nuttx/include/arch/types.h \
+ /home/lbf/project/well_lid_master/nuttx/include/limits.h \
+ /home/lbf/project/well_lid_master/nuttx/include/arch/limits.h \
+ /home/lbf/project/well_lid_master/nuttx/include/time.h \
+ /home/lbf/project/well_lid_master/nuttx/include/sys/ioctl.h \
+ /home/lbf/project/well_lid_master/nuttx/include/nuttx/fs/ioctl.h \
+ /home/lbf/project/well_lid_master/nuttx/include/nuttx/serial/tioctl.h \
+ /home/lbf/project/well_lid_master/nuttx/include/fcntl.h \
+ /home/lbf/project/well_lid_master/nuttx/include/errno.h \
+ /home/lbf/project/well_lid_master/apps/include/fsutils/mksmartfs.h \
+ /home/lbf/project/well_lid_master/nuttx/include/nuttx/fs/smart.h \
+ /home/lbf/project/well_lid_master/nuttx/include/stdbool.h \
+ /home/lbf/project/well_lid_master/nuttx/include/unistd.h

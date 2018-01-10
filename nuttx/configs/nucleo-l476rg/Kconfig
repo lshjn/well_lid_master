@@ -1,0 +1,64 @@
+#
+# For a description of the syntax of this configuration file,
+# see the file kconfig-language.txt in the NuttX tools repository.
+#
+
+if ARCH_BOARD_NUCLEO_L476RG
+
+config NUCLEO_L476RG_AJOY_MINBUTTONS
+	bool "Minimal Joystick Buttons"
+	default n if !STM32_USART1
+	default y if STM32_USART1
+	depends on AJOYSTICK
+	---help---
+		The Itead Joystick shield supports analog X/Y position and up to 5
+		buttons.  Some of these buttons may conflict with other resources
+		(Button F, for example, conflicts with the default USART1 pin usage).
+		Selecting this option will return the number of buttons to the
+		minimal set:  SELECT (joystick down), FIRE (BUTTON B), and JUMP
+		(BUTTON A).
+
+
+config STM32L476_WDG
+	bool
+
+config STM32L476_IWDG
+	bool "stm32l476rg iwdg kicker support"
+	depends on STM32L4_IWDG
+	depends on WATCHDOG
+	select STM32L476_WDG
+
+config STM32L476_IWDG_TIMEOUT
+	int "stm32l476rg iwdg Timeout (ms)"
+	default 32000
+	depends on STM32L476_IWDG
+	---help---
+		Watchdog timeout value in milliseconds.
+
+if STM32L476_WDG
+config STM32L476_WDG_THREAD
+	bool "Watchdog Deamon Thread"
+
+if STM32L476_WDG_THREAD
+config STM32L476_WDG_THREAD_NAME
+	string "Watchdog Thread Name"
+	default "wdog"
+
+config STM32L476_WDG_THREAD_INTERVAL
+	int "Watchdog Thread Interval (ms)"
+	default 2500
+
+config STM32L476_WDG_THREAD_PRIORITY
+	int "Watchdog Thread Priority"
+	default 200
+
+config STM32L476_WDG_THREAD_STACKSIZE
+	int "Watchdog Thread Stacksize"
+	default 1024
+
+endif # STM32L476_WDG_THREAD
+endif # STM32L476_WDG
+
+
+
+endif # ARCH_BOARD_NUCLEO_L476RG

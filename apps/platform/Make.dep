@@ -1,0 +1,12 @@
+bin/gnu_cxxinitialize.o: gnu/gnu_cxxinitialize.c \
+ /home/lbf/project/well_lid_master/nuttx/include/nuttx/config.h \
+ /home/lbf/project/well_lid_master/nuttx/include/debug.h \
+ /home/lbf/project/well_lid_master/nuttx/include/nuttx/compiler.h \
+ /home/lbf/project/well_lid_master/nuttx/include/syslog.h \
+ /home/lbf/project/well_lid_master/nuttx/include/stdint.h \
+ /home/lbf/project/well_lid_master/nuttx/include/arch/types.h \
+ /home/lbf/project/well_lid_master/nuttx/include/limits.h \
+ /home/lbf/project/well_lid_master/nuttx/include/arch/limits.h \
+ /usr/lib/gcc/arm-none-eabi/4.9.3/include/stdarg.h \
+ /home/lbf/project/well_lid_master/nuttx/include/stdbool.h \
+ /home/lbf/project/well_lid_master/apps/include/platform/cxxinitialize.h

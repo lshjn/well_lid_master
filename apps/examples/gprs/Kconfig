@@ -1,0 +1,40 @@
+#
+# For a description of the syntax of this configuration file,
+# see the file kconfig-language.txt in the NuttX tools repository.
+#
+
+config EXAMPLES_GPRS
+	bool "gprs driver example"
+	default n
+	---help---
+		Enable the gprs driversexample
+
+if EXAMPLES_GPRS
+
+
+config EXAMPLES_GPRS_PROGNAME
+	string "Program name"
+	default "gprs"
+	depends on BUILD_KERNEL
+	---help---
+		This is the name of the program that will be use when the NSH ELF
+		program is installed.
+
+config EXAMPLES_GPRS_PRIORITY
+	int "GPRS task priority"
+	default 100
+
+config EXAMPLES_GPRS_STACKSIZE
+	int "gprs stack size"
+	default 2048
+
+config EXAMPLES_GPRS_DEVPATH
+	string "gprs device path"
+	default "/dev/ttyS1"
+	
+config EXAMPLES_KEYBOARD_DEVPATH
+	string "keyboard device path"
+	default "/dev/ttyS0"
+
+
+endif # EXAMPLES_GPRS

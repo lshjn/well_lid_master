@@ -1,0 +1,7 @@
+#!/bin/bash
+cd configs/nucleo-l476rg/include
+echo $PWD
+sleep 0.5
+genromfs -f romfs_img -d etc -V stm32l476rgVol
+sleep 0.5
+xxd -i romfs_img >nsh_romfsimg.h

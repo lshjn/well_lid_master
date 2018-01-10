@@ -1,0 +1,398 @@
+#
+# For a description of the syntax of this configuration file,
+# see the file kconfig-language.txt in the NuttX tools repository.
+#
+
+config EXAMPLES_LID_MASTER
+	bool "smart well lid :master example"
+	default n
+	---help---
+		Enable smart well lid :master example
+
+
+if EXAMPLES_LID_MASTER
+
+config EXAMPLES_LID_MASTER_PROGNAME
+	string "Program name"
+	default "lid_master"
+	depends on BUILD_KERNEL
+	---help---
+		This is the name of the program that will be use when the NSH ELF
+		program is installed.
+
+config EXAMPLES_LID_MASTER_PRIORITY
+	int "task_main priority"
+	default 100
+
+config EXAMPLES_LID_MASTER_STACKSIZE
+	int "stack_mian size"
+	default 2048
+
+#monitor
+config EXAMPLES_LID_MASTER_MONITOR
+	bool "monitor task"
+	default n
+	depends on EXAMPLES_LID_MASTER
+	---help---
+		Enable the monitor task
+
+if EXAMPLES_LID_MASTER_MONITOR
+
+config EXAMPLES_MONITOR_PRIORITY
+	int "monitor task priority"
+	default 100
+
+config EXAMPLES_MONITOR_STACKSIZE
+	int "monitor stack size"
+	default 2048
+	
+endif #monitor
+
+#485
+config EXAMPLES_LID_MASTER_485
+	bool "485 task"
+	default n
+	depends on EXAMPLES_LID_MASTER
+	---help---
+		Enable the 485 task
+
+if EXAMPLES_LID_MASTER_485
+
+config EXAMPLES_485_PRIORITY
+	int "485 task priority"
+	default 100
+
+config EXAMPLES_485_STACKSIZE
+	int "485 stack size"
+	default 2048
+
+config EXAMPLES_485_DEVPATH
+	string "485 device path"
+	default "/dev/ttyS4"
+	
+endif #485
+
+#gprs
+config EXAMPLES_MASTER_GPRS
+	bool "gprs task"
+	default n
+	depends on EXAMPLES_LID_MASTER
+	---help---
+		Enable the gprs task
+
+if EXAMPLES_MASTER_GPRS
+
+config EXAMPLES_GPRS_PRIORITY
+	int "GPRS task priority"
+	default 100
+
+config EXAMPLES_GPRS_STACKSIZE
+	int "gprs stack size"
+	default 2048
+
+config EXAMPLES_GPRS_DEVPATH
+	string "gprs device path"
+	default "/dev/ttyS1"
+	
+endif # EXAMPLES_GPRS
+
+#bluetooth
+config EXAMPLES_MASTER_BLUETOOTH
+	bool "bluetooth task"
+	default n
+	depends on EXAMPLES_LID_MASTER
+	---help---
+		Enable the bluetooth task
+
+if EXAMPLES_MASTER_BLUETOOTH
+
+config EXAMPLES_BLUETOOTH_PRIORITY
+	int "bluetooth app task priority"
+	default 100
+
+config EXAMPLES_BLUETOOTH_STACKSIZE
+	int "bluetooth app stack size"
+	default 2048
+
+config EXAMPLES_BLUETOOTH_DEVPATH
+	string "bluetooth device path"
+	default "/dev/ttyS3"
+	
+endif # EXAMPLES_BLUETOOTH
+
+#motor
+config EXAMPLES_LID_MOTOR
+	bool "motor task"
+	default n
+	depends on EXAMPLES_LID_MASTER
+	---help---
+		Enable the wakeup task
+
+if EXAMPLES_LID_MOTOR
+
+config EXAMPLES_MOTOR_PRIORITY
+	int "motor task priority"
+	default 100
+
+config EXAMPLES_MOTOR_STACKSIZE
+	int "motor stack size"
+	default 2048
+
+config EXAMPLES_SENSORA_DEVPATH
+	string "sensorA device path"
+	default "/dev/gpin0"
+
+config EXAMPLES_SENSORB_DEVPATH
+	string "sensorB device path"
+	default "/dev/gpin1"
+
+config EXAMPLES_LIGHT315_DEVPATH
+	string "light 315Mhz device path"
+	default "/dev/gpin2"	
+endif #MOTOR 
+
+#pwm
+config LID_EXAMPLES_PWM
+	bool "PWM example"
+	default n
+	depends on PWM && NSH_BUILTIN_APPS
+	---help---
+		Enable the Pulse width modulation (PWM) example
+
+if LID_EXAMPLES_PWM
+
+config EXAMPLES_PWM_DEVPATH
+	string "PWM device path"
+	default "/dev/pwm0"
+	---help---
+		The path to the PWM device.  Default: /dev/pwm0
+
+config EXAMPLES_PWM_FREQUENCY
+	int "Default PWM frequency"
+	default 100
+	---help---
+		The default PWM frequency.  Default: 100 Hz
+
+config EXAMPLES_PWM_DUTYPCT
+	int "Default PWM duty percentage"
+	default 50
+	range 1 99
+	---help---
+		The default PWM duty as a percentage.  Default: 50%
+
+config EXAMPLES_PWM_PULSECOUNT
+	int "Default pulse count"
+	default 0
+	depends on PWM_PULSECOUNT
+	---help---
+		The initial PWM pulse count.  This option is only available if
+		PWM_PULSECOUNT is defined.  Default: 0 (i.e., use the duration, not
+		the count).
+		
+endif #pwm 
+
+
+#pwm buzz
+config EXAMPLES_BUZZPWM
+	bool "BUZZPWM example"
+	default n
+	depends on PWM && NSH_BUILTIN_APPS
+	---help---
+		Enable the Pulse width modulation (PWM) example
+
+if EXAMPLES_BUZZPWM
+
+config EXAMPLES_BUZZPWM_DEVPATH
+	string "PWM device path"
+	default "/dev/pwm1"
+	---help---
+		The path to the PWM device.  Default: /dev/pwm1
+
+config EXAMPLES_BUZZON_PWM_FREQUENCY
+	int "buzzon PWM frequency"
+	default 100
+	---help---
+		The default PWM frequency.  Default: 100 Hz
+
+config EXAMPLES_BUZZON_PWM_DUTYPCT
+	int "buzzon PWM duty percentage"
+	default 50
+	range 1 99
+	---help---
+		The default PWM duty as a percentage.  Default: 50%
+
+
+config EXAMPLES_BUZZOFF_PWM_FREQUENCY
+	int "buzzoff PWM frequency"
+	default 200
+	---help---
+		The default PWM frequency.  Default: 100 Hz
+
+config EXAMPLES_BUZZOFF_PWM_DUTYPCT
+	int "buzzoff PWM duty percentage"
+	default 50
+	range 1 99
+	---help---
+		The default PWM duty as a percentage.  Default: 50%
+
+		
+endif #pwm buzz
+
+
+
+#wakeup 315
+config EXAMPLES_LID_MASTER_WAKEUP_315
+	bool "wakeup_315Mhz task"
+	default n
+	depends on EXAMPLES_LID_MASTER
+	---help---
+		Enable the wakeup task
+
+if EXAMPLES_LID_MASTER_WAKEUP_315
+
+config EXAMPLES_WKUP315_PRIORITY
+	int "wakeup_315Mhz task priority"
+	default 100
+
+config EXAMPLES_WKUP315_STACKSIZE
+	int "wakeup_315Mhz stack size"
+	default 2048
+
+config EXAMPLES_WKUP315_DEVPATH
+	string "wakeup_315Mhz device path"
+	default "/dev/gpint3"
+	
+endif #wakeup 315
+
+
+#wakeup zd801s
+config EXAMPLES_LID_MASTER_ZD801S
+	bool "zd801s alarm task"
+	default n
+	depends on EXAMPLES_LID_MASTER
+	---help---
+		Enable the wakeup task
+
+if EXAMPLES_LID_MASTER_ZD801S
+
+config EXAMPLES_ZD801S_PRIORITY
+	int "zd801s task priority"
+	default 100
+
+config EXAMPLES_ZD801S_STACKSIZE
+	int "zd801s stack size"
+	default 2048
+
+config EXAMPLES_ZD801S_DEVPATH
+	string "zd801s device path"
+	default "/dev/gpint4"
+	
+endif #wakeup zd801s
+
+#close 315
+config EXAMPLES_LID_MASTER_CLOSELOCK_315
+	bool "close_315Mhz task"
+	default n
+	depends on EXAMPLES_LID_MASTER
+	---help---
+		Enable the close task
+
+if EXAMPLES_LID_MASTER_CLOSELOCK_315
+
+config EXAMPLES_CLOSE315_PRIORITY
+	int "close_315Mhz task priority"
+	default 100
+
+config EXAMPLES_CLOSE315_STACKSIZE
+	int "close_315Mhz stack size"
+	default 2048
+
+config EXAMPLES_CLOSE315_DEVPATH
+	string "close_315Mhz device path"
+	default "/dev/gpint5"
+	
+endif #close 315
+
+#ADC
+config EXAMPLES_LID_MASTER_ADC
+	bool "adc task"
+	default n
+	depends on ADC && LIB_BOARDCTL && EXAMPLES_LID_MASTER
+	select BOARDCTL_ADCTEST
+	---help---
+		Enable the adc task
+
+if EXAMPLES_LID_MASTER_ADC
+
+config EXAMPLES_ADC_PRIORITY
+	int "adc task priority"
+	default 100
+
+config EXAMPLES_ADC_STACKSIZE
+	int "adc stack size"
+	default 2048
+
+config EXAMPLES_ADC_DEVPATH
+	string "ADC device path"
+	default "/dev/adc0"
+	---help---
+		The default path to the ADC device. Default: /dev/adc0
+
+config EXAMPLES_ADC_NSAMPLES
+	int "Number of Sample Groups"
+	default 0
+	depends on !NSH_BUILTIN_APPS
+	---help---
+		If NSH_BUILTIN_APPS is defined, then the number of samples is provided
+		on the command line and this value is ignored.  Otherwise, this number
+		of samples is collected and the program terminates.  Default:  0 (samples
+		are collected indefinitely).
+
+config EXAMPLES_ADC_GROUPSIZE
+	int "Number of Samples per Group"
+	default 9
+	---help---
+		The number of samples to read at once. Default: 4
+
+config EXAMPLES_ADC_SWTRIG
+	bool "Use software trigger"
+	default n
+	---help---
+		Some ADCs may be configured so there is no automatic or periodic
+		conversion of samples.  Rather, the ADC sampling must be trigger by
+		software via an ioctl command.  Select this option only if
+		applicable for your ADC configuration.  In this case, the test will
+		issue the software trigger ioctl before attempting to read from the
+		ADC.
+
+endif #adc
+
+
+
+
+#flash
+config EXAMPLES_LID_MASTER_FLASH
+	bool "flash task"
+	default n
+	depends on EXAMPLES_LID_MASTER
+	---help---
+		Enable the flash task
+
+if EXAMPLES_LID_MASTER_FLASH
+
+config EXAMPLES_FLASH_PRIORITY
+	int "flash task priority"
+	default 100
+
+config EXAMPLES_FLASH_STACKSIZE
+	int "flash stack size"
+	default 2048
+
+config EXAMPLES_FLASH_DEVPATH
+	string "flash device path"
+	default "/dev/mtdblock0"
+	
+endif #flash
+
+
+endif # EXAMPLES_LID_MASTER

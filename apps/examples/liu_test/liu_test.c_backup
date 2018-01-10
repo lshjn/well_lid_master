@@ -1,0 +1,175 @@
+/****************************************************************************
+ * examples/gpio/gpio_main.c
+ *
+ *   Copyright (C) 2016 Gregory Nutt. All rights reserved.
+ *   Author: Gregory Nutt <gnutt@nuttx.org>
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ *
+ * 1. Redistributions of source code must retain the above copyright
+ *    notice, this list of conditions and the following disclaimer.
+ * 2. Redistributions in binary form must reproduce the above copyright
+ *    notice, this list of conditions and the following disclaimer in
+ *    the documentation and/or other materials provided with the
+ *    distribution.
+ * 3. Neither the name NuttX nor the names of its contributors may be
+ *    used to endorse or promote products derived from this software
+ *    without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+ * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+ * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
+ * FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
+ * COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+ * INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+ * BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS
+ * OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED
+ * AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+ * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
+ * ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ * POSSIBILITY OF SUCH DAMAGE.
+ *
+ ****************************************************************************/
+
+/****************************************************************************
+ * Included Files
+ ****************************************************************************/
+
+#include <sys/ioctl.h>
+#include <strings.h>
+#include <string.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <fcntl.h>
+#include <sched.h>
+#include <errno.h>
+#include <time.h>
+#include <sys/time.h>
+
+#include <nuttx/analog/adc.h>
+#include <nuttx/analog/ioctl.h>
+#include <nuttx/leds/userled.h>
+#include <nuttx/board.h>
+#include <sys/boardctl.h>
+
+#include <nuttx/board.h>
+#include <sys/boardctl.h>
+#include <errno.h>
+#include <nuttx/ioexpander/gpio.h>
+
+
+#include <nuttx/drivers/pwm.h>
+#include <nuttx/fs/ioctl.h>
+
+/**************************************************************************
+* DEBUG add by liubofei for printf
+* add by liubofei 20171220
+***************************************************************************/
+
+#define __GO_DEBUG__  1
+#if __GO_DEBUG__   
+#define TEST_DEBUG(format,...) printf("[TEST_DEBUG: "__FILE__",%s(),Line:%04d:] "format"\n",__func__,__LINE__,##__VA_ARGS__)   
+#else
+#define TEST_DEBUG(format,...) 
+#endif
+
+/*
+* @ This is a test program !!!
+* @ add by liubofei 20171220  
+*/
+
+void pwm_init_t(int fd)
+{
+	int ret = -1;
+
+	struct pwm_info_s info;
+
+	info.frequency = 100;
+
+	info.duty  = (50 << 16) / 100;
+
+	ret = ioctl(fd, PWMIOC_SETCHARACTERISTICS, (unsigned long)((uintptr_t)&info));
+	if (ret < 0)
+	{
+		TEST_DEBUG("PWM INIT ERROR \n");
+	}
+}
+
+void pwm_start_t(int fd)
+{
+	int ret;
+	
+	ret = ioctl(fd, PWMIOC_START, 0);
+	if (ret < 0)
+	{
+		TEST_DEBUG("PWM START ERROR \n");
+	}
+}
+
+void pwm_stop_t(int fd)
+{
+	int ret;
+
+	ret = ioctl(fd, PWMIOC_STOP, 0);
+	if (ret < 0)
+	{
+		TEST_DEBUG("PWM STOP ERROR \n");
+	}
+}
+
+int motor_ctl(void)
+{
+	int fd_pwm = -1;
+
+	fd_pwm = open(CONFIG_EXAMPLES_PWM_DEVPATH, O_RDONLY);
+	if (fd_pwm < 0)
+	{
+		TEST_DEBUG("fd_pwm error\n");
+		return -1;
+	}
+
+	boardctl(BOARDIOC_PWM_GPIOINIT, 0);
+
+	pwm_init_t(fd_pwm);
+	//正转
+	boardctl(BOARDIOC_MOTOR_DIR_OPEN, 0);
+	pwm_start_t(fd_pwm);
+	sleep(5);
+	//反转
+	boardctl(BOARDIOC_MOTOR_DIR_CLOSE, 0);
+	pwm_start_t(fd_pwm);
+	sleep(5);	
+	//电机断电
+	boardctl(BOARDIOC_MOTOR_EN_DISABLE, 0);
+	pwm_stop_t(fd_pwm);
+
+	return 0;
+}
+
+#ifdef CONFIG_BUILD_KERNEL
+int main(int argc, FAR char *argv[])
+#else
+int liu_test_main(int argc, char *argv[])
+#endif
+{
+
+	if(0==strcmp(argv[1],"motor"))
+	{
+		motor_ctl();
+	}
+	else
+	{
+		TEST_DEBUG("INPUT ERROR ERROR ERROR \n");	
+	}	
+/*
+	while(1)
+	{
+		sleep(1);
+		TEST_DEBUG("FOR TO TEST\n");
+	
+	}
+*/
+	return 0;
+}

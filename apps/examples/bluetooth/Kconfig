@@ -1,0 +1,36 @@
+#
+# For a description of the syntax of this configuration file,
+# see the file kconfig-language.txt in the NuttX tools repository.
+#
+
+config EXAMPLES_BLUETOOTH
+	bool "bluetooth driver example"
+	default n
+	---help---
+		Enable the bluetooth driversexample
+
+if EXAMPLES_BLUETOOTH
+
+
+config EXAMPLES_BLUETOOTH_PROGNAME
+	string "Program name"
+	default "bluetooth app"
+	depends on BUILD_KERNEL
+	---help---
+		This is the name of the program that will be use when the NSH ELF
+		program is installed.
+
+config EXAMPLES_BLUETOOTH_PRIORITY
+	int "bluetooth app task priority"
+	default 100
+
+config EXAMPLES_BLUETOOTH_STACKSIZE
+	int "bluetooth app stack size"
+	default 2048
+
+config EXAMPLES_BLUETOOTH_DEVPATH
+	string "bluetooth device path"
+	default "/dev/ttyS2"
+
+
+endif # EXAMPLES_BLUETOOTH

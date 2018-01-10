@@ -1,0 +1,36 @@
+#
+# For a description of the syntax of this configuration file,
+# see the file kconfig-language.txt in the NuttX tools repository.
+#
+
+config EXAMPLES_485
+	bool "485 driver example"
+	default n
+	---help---
+		Enable the 485 driversexample
+
+if EXAMPLES_485
+
+
+config EXAMPLES_485_PROGNAME
+	string "Program name"
+	default "485"
+	depends on BUILD_KERNEL
+	---help---
+		This is the name of the program that will be use when the NSH ELF
+		program is installed.
+
+config EXAMPLES_485_PRIORITY
+	int "485 task priority"
+	default 100
+
+config EXAMPLES_485_STACKSIZE
+	int "485 stack size"
+	default 2048
+
+config EXAMPLES_485_DEVPATH
+	string "485 device path"
+	default "/dev/ttyS1"
+
+
+endif # EXAMPLES_485

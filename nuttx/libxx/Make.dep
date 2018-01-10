@@ -1,0 +1,120 @@
+libxx_cxapurevirtual.o: libxx_cxapurevirtual.cxx \
+ /home/lbf/project/well_lid_master/nuttx/include/cxx/cassert \
+ /home/lbf/project/well_lid_master/nuttx/include/assert.h \
+ /home/lbf/project/well_lid_master/nuttx/include/nuttx/compiler.h \
+ /home/lbf/project/well_lid_master/nuttx/include/nuttx/config.h \
+ /home/lbf/project/well_lid_master/nuttx/include/stdint.h \
+ /home/lbf/project/well_lid_master/nuttx/include/arch/types.h \
+ /home/lbf/project/well_lid_master/nuttx/include/limits.h \
+ /home/lbf/project/well_lid_master/nuttx/include/arch/limits.h
+libxx_eabi_atexit.o: libxx_eabi_atexit.cxx \
+ /home/lbf/project/well_lid_master/nuttx/include/nuttx/config.h \
+ /home/lbf/project/well_lid_master/nuttx/include/cxx/cstdlib \
+ /home/lbf/project/well_lid_master/nuttx/include/stdlib.h \
+ /home/lbf/project/well_lid_master/nuttx/include/nuttx/compiler.h \
+ /home/lbf/project/well_lid_master/nuttx/include/sys/types.h \
+ /home/lbf/project/well_lid_master/nuttx/include/stdint.h \
+ /home/lbf/project/well_lid_master/nuttx/include/arch/types.h \
+ /home/lbf/project/well_lid_master/nuttx/include/limits.h \
+ /home/lbf/project/well_lid_master/nuttx/include/arch/limits.h libxx.hxx
+libxx_cxa_atexit.o: libxx_cxa_atexit.cxx \
+ /home/lbf/project/well_lid_master/nuttx/include/nuttx/config.h \
+ /home/lbf/project/well_lid_master/nuttx/include/cxx/cassert \
+ /home/lbf/project/well_lid_master/nuttx/include/assert.h \
+ /home/lbf/project/well_lid_master/nuttx/include/nuttx/compiler.h \
+ /home/lbf/project/well_lid_master/nuttx/include/stdint.h \
+ /home/lbf/project/well_lid_master/nuttx/include/arch/types.h \
+ /home/lbf/project/well_lid_master/nuttx/include/limits.h \
+ /home/lbf/project/well_lid_master/nuttx/include/arch/limits.h libxx.hxx \
+ /home/lbf/project/well_lid_master/nuttx/include/cxx/cstdlib \
+ /home/lbf/project/well_lid_master/nuttx/include/stdlib.h \
+ /home/lbf/project/well_lid_master/nuttx/include/sys/types.h
+libxx_delete.o: libxx_delete.cxx \
+ /home/lbf/project/well_lid_master/nuttx/include/nuttx/config.h libxx.hxx \
+ /home/lbf/project/well_lid_master/nuttx/include/cxx/cstdlib \
+ /home/lbf/project/well_lid_master/nuttx/include/stdlib.h \
+ /home/lbf/project/well_lid_master/nuttx/include/nuttx/compiler.h \
+ /home/lbf/project/well_lid_master/nuttx/include/sys/types.h \
+ /home/lbf/project/well_lid_master/nuttx/include/stdint.h \
+ /home/lbf/project/well_lid_master/nuttx/include/arch/types.h \
+ /home/lbf/project/well_lid_master/nuttx/include/limits.h \
+ /home/lbf/project/well_lid_master/nuttx/include/arch/limits.h
+libxx_delete_sized.o: libxx_delete_sized.cxx \
+ /home/lbf/project/well_lid_master/nuttx/include/nuttx/compiler.h \
+ /home/lbf/project/well_lid_master/nuttx/include/nuttx/config.h libxx.hxx \
+ /home/lbf/project/well_lid_master/nuttx/include/cxx/cstdlib \
+ /home/lbf/project/well_lid_master/nuttx/include/stdlib.h \
+ /home/lbf/project/well_lid_master/nuttx/include/sys/types.h \
+ /home/lbf/project/well_lid_master/nuttx/include/stdint.h \
+ /home/lbf/project/well_lid_master/nuttx/include/arch/types.h \
+ /home/lbf/project/well_lid_master/nuttx/include/limits.h \
+ /home/lbf/project/well_lid_master/nuttx/include/arch/limits.h
+libxx_deletea.o: libxx_deletea.cxx \
+ /home/lbf/project/well_lid_master/nuttx/include/nuttx/config.h libxx.hxx \
+ /home/lbf/project/well_lid_master/nuttx/include/cxx/cstdlib \
+ /home/lbf/project/well_lid_master/nuttx/include/stdlib.h \
+ /home/lbf/project/well_lid_master/nuttx/include/nuttx/compiler.h \
+ /home/lbf/project/well_lid_master/nuttx/include/sys/types.h \
+ /home/lbf/project/well_lid_master/nuttx/include/stdint.h \
+ /home/lbf/project/well_lid_master/nuttx/include/arch/types.h \
+ /home/lbf/project/well_lid_master/nuttx/include/limits.h \
+ /home/lbf/project/well_lid_master/nuttx/include/arch/limits.h
+libxx_deletea_sized.o: libxx_deletea_sized.cxx \
+ /home/lbf/project/well_lid_master/nuttx/include/nuttx/config.h \
+ /home/lbf/project/well_lid_master/nuttx/include/nuttx/compiler.h \
+ libxx.hxx /home/lbf/project/well_lid_master/nuttx/include/cxx/cstdlib \
+ /home/lbf/project/well_lid_master/nuttx/include/stdlib.h \
+ /home/lbf/project/well_lid_master/nuttx/include/sys/types.h \
+ /home/lbf/project/well_lid_master/nuttx/include/stdint.h \
+ /home/lbf/project/well_lid_master/nuttx/include/arch/types.h \
+ /home/lbf/project/well_lid_master/nuttx/include/limits.h \
+ /home/lbf/project/well_lid_master/nuttx/include/arch/limits.h
+libxx_new.o: libxx_new.cxx \
+ /home/lbf/project/well_lid_master/nuttx/include/nuttx/config.h \
+ /home/lbf/project/well_lid_master/nuttx/include/cxx/cstddef \
+ /home/lbf/project/well_lid_master/nuttx/include/nuttx/compiler.h \
+ /home/lbf/project/well_lid_master/nuttx/include/stddef.h \
+ /home/lbf/project/well_lid_master/nuttx/include/sys/types.h \
+ /home/lbf/project/well_lid_master/nuttx/include/stdint.h \
+ /home/lbf/project/well_lid_master/nuttx/include/arch/types.h \
+ /home/lbf/project/well_lid_master/nuttx/include/limits.h \
+ /home/lbf/project/well_lid_master/nuttx/include/arch/limits.h \
+ /home/lbf/project/well_lid_master/nuttx/include/debug.h \
+ /home/lbf/project/well_lid_master/nuttx/include/syslog.h \
+ /usr/lib/gcc/arm-none-eabi/4.9.3/include/stdarg.h \
+ /home/lbf/project/well_lid_master/nuttx/include/stdbool.h libxx.hxx \
+ /home/lbf/project/well_lid_master/nuttx/include/cxx/cstdlib \
+ /home/lbf/project/well_lid_master/nuttx/include/stdlib.h
+libxx_newa.o: libxx_newa.cxx \
+ /home/lbf/project/well_lid_master/nuttx/include/nuttx/config.h \
+ /home/lbf/project/well_lid_master/nuttx/include/cxx/cstddef \
+ /home/lbf/project/well_lid_master/nuttx/include/nuttx/compiler.h \
+ /home/lbf/project/well_lid_master/nuttx/include/stddef.h \
+ /home/lbf/project/well_lid_master/nuttx/include/sys/types.h \
+ /home/lbf/project/well_lid_master/nuttx/include/stdint.h \
+ /home/lbf/project/well_lid_master/nuttx/include/arch/types.h \
+ /home/lbf/project/well_lid_master/nuttx/include/limits.h \
+ /home/lbf/project/well_lid_master/nuttx/include/arch/limits.h \
+ /home/lbf/project/well_lid_master/nuttx/include/debug.h \
+ /home/lbf/project/well_lid_master/nuttx/include/syslog.h \
+ /usr/lib/gcc/arm-none-eabi/4.9.3/include/stdarg.h \
+ /home/lbf/project/well_lid_master/nuttx/include/stdbool.h libxx.hxx \
+ /home/lbf/project/well_lid_master/nuttx/include/cxx/cstdlib \
+ /home/lbf/project/well_lid_master/nuttx/include/stdlib.h
+libxx_stdthrow.o: libxx_stdthrow.cxx \
+ /home/lbf/project/well_lid_master/nuttx/include/cxx/cstdlib \
+ /home/lbf/project/well_lid_master/nuttx/include/nuttx/config.h \
+ /home/lbf/project/well_lid_master/nuttx/include/stdlib.h \
+ /home/lbf/project/well_lid_master/nuttx/include/nuttx/compiler.h \
+ /home/lbf/project/well_lid_master/nuttx/include/sys/types.h \
+ /home/lbf/project/well_lid_master/nuttx/include/stdint.h \
+ /home/lbf/project/well_lid_master/nuttx/include/arch/types.h \
+ /home/lbf/project/well_lid_master/nuttx/include/limits.h \
+ /home/lbf/project/well_lid_master/nuttx/include/arch/limits.h \
+ /home/lbf/project/well_lid_master/nuttx/include/debug.h \
+ /home/lbf/project/well_lid_master/nuttx/include/syslog.h \
+ /usr/lib/gcc/arm-none-eabi/4.9.3/include/stdarg.h \
+ /home/lbf/project/well_lid_master/nuttx/include/stdbool.h
+libxx_cxa_guard.o: libxx_cxa_guard.cxx \
+ /home/lbf/project/well_lid_master/nuttx/include/nuttx/compiler.h \
+ /home/lbf/project/well_lid_master/nuttx/include/nuttx/config.h

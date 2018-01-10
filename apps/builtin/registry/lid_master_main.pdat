@@ -1,0 +1,1 @@
+int lid_master_main(int argc, char *argv[]);
